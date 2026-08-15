@@ -13,7 +13,7 @@ Within a default YAMS setup, [seeding is not enabled](https://yams.media/docs/co
 
 This is a guide on how to automate a flexible seeding setup within your media server:
 - Once movies and shows are downloaded, they will be automatically seeded whilst the media remains within your server
-- When media is watched from your streaming platform, it is deleted from within Radarr and Sonarr
+- When media is watched from your streaming platform, that respective hardlink is deleted from your file system
 - These now 'loose' torrents are ensured to meet any minimum seeding requirements for your tracker, and then seamlessly deleted, freeing up your storage space!
 
 Note that if previously have a cross seeding setup, this guide should not be followed word for word. Extra manipulation of the provided workflows may be necessary.
@@ -54,7 +54,7 @@ To set up this stack, a deletion tool should be used. This refers to any tool th
 
 You can use the Jellyfin plugin [Media Cleaner](https://github.com/shemanaev/jellyfin-plugin-media-cleaner) which deletes watched movies/shows in Jellyfin after a specified amount of time. If you are using Jellyfin, this is a good option that doesn't require running a seperate container.
 
-If you wish to use another service, maybe to delete unwatched media too, please do. Do some research on the many Plex and Jellyfin tools available to clean up your libraries. Any tools that delete media will work, as long as they *don't mess with your torrents*.
+If you wish to use another service, maybe to delete unwatched media too, please do. Do some research on the many Plex and Jellyfin/Emby tools available to clean up your libraries. Any tools that delete media will work, as long as they *don't mess with your torrents*.
 
 ## Setting up Qui 🛠️
 [Qui](https://getqui.com/) is an extremely handy web UI for qBitTorrent, but it also has powerful automation features. We will be using its automation features to monitor our torrents, and delete them when they are no longer needed.
@@ -77,7 +77,6 @@ Add the following entry in your `docker-compose.custom.yml` file, below the `ser
       - TZ=${TZ}
     volumes:
       - ${INSTALL_DIRECTORY}/config/qui:/config
-      # optional, but required for filesystem-enabled features like hardlink detection
       - ${MEDIA_DIRECTORY}/downloads/torrents:/data/downloads/torrents
 ```
 
