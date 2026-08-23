@@ -108,7 +108,7 @@ Lets place this inside our `.env` for easy reference in the future, and so we ca
 QBITTORRENT_API_KEY=qbt_your_api_key
 ```
 
-Perfect. Now, complete the following steps if you **have already set up port forwarding using the YAMS installer:**
+Perfect. Now, complete the following steps **only if you have already set up port forwarding using the YAMS installer:**
 - Open your main docker compose file at `_INSTALL_PATH_/docker-compose.yaml`
 - Find the 'gluetun' container entry
 - Uncomment the two lines starting with `#- 'VPN_PORT_FORWARDING_UP_COMMAND=` and `#- 'VPN_PORT_FORWARDING_DOWN_COMMAND=`
@@ -127,19 +127,65 @@ Finally, scroll to the bottom and click "Save".
 {{< image src="/pics/qbittorrent/qbittorrent-7.png" alt="" title="" loading="auto" >}}
 
 
-## Final VPN Check
+## Final VPN Checks
 
-Let's do one last VPN check to make sure everything's working:
+Let's run the YAMS check-vpn command again to make sure qBitTorrent is still up and working:
 
 ```bash
 yams check-vpn
 ```
-
 Great! Everything should be configured and ready to go. How about we get testing, eh?
 
-We will complete two tests. The first will verify that our VPN is truly working (you can never be too sure), and the second will verify we can actually download stuff onto our filesystem.
+The first will verify that our VPN is truly hiding your IP (you can never be too sure), and the second will verify we can actually download stuff onto our filesystem.
+
+### IP Leak Verification
+
+1. Visit [whatismyip.net’s Torrent Checker](https://www.whatismyip.net/tools/torrent-ip-checker/) and grab their test magnet link by right clicking on the button and selecting 'Copy Link Address'
+{{< image src="/pics/qbittorrent/qbittorrent-8.png" alt="" title="" loading="auto" >}}
+
+2. In [qBitTorrent](http://_USER_IP_:8081), click the 'Add Torrent Link' icon
+{{< image src="/pics/qbittorrent/qbittorrent-9.png" alt="" title="" loading="auto" >}}
+
+
+3. Paste the magnet link and click 'Download'. Then, scroll to the bottom of the next window and select 'Add Torrent'.
+{{< image src="/pics/qbittorrent/qbittorrent-10.png" alt="" title="" loading="auto" >}}
+{{< image src="/pics/qbittorrent/qbittorrent-11.png" alt="" title="" loading="auto" >}}
+
+
+4. You’ll see a new torrent called 'Torrent Tracker IP Checker' in your list. Don’t worry - it won’t actually download anything!
+{{< image src="/pics/qbittorrent/qbittorrent-12.png" alt="" title="" loading="auto" >}}
+
+5. Back on the checker website, you will see your qBitTorrent client's IP.
+{{< image src="/pics/qbittorrent/qbittorrent-13.png" alt="" title="" loading="auto" >}}
+
+
+If this IP address:
+- Is different to your real IP address
+- Matches the output of `yams check-vpn`
+Then you are good to go. You can delete that torrent entry you just added. Gluetun and qBitTorrent are successfully working together to mask your real IP address.
+
+### Download Verification
+
+Now we know your VPN is working, let's see if you can actually download anything! We will test by downloading a Debian ISO. (We will delete it after - it is just for testing).
+
+1. Head over to the [Debian torrent download page](https://cdimage.debian.org/debian-cd/current/amd64/bt-cd/), then scroll to the bottom. Click on the link called `debian-13.6.0-amd64-netinst.iso.torrent` and a `.torrent` file will download onto your computer. *Learn what `.torrent` files are [here](/docs/fundamentals/torrenting-and-vpns/#torrent-file)*
+
+2. Open [qBitTorrent](http://_USER_IP_:8081) and click the 'Add Torrent' icon
+{{< image src="/pics/qbittorrent/qbittorrent-14.png" alt="" title="" loading="auto" >}}
+
+3. Select the file you just downloaded onto your computer, then scroll to the bottom of the window and select 'Add Torrent'
+{{< image src="/pics/qbittorrent/qbittorrent-15.png" alt="" title="" loading="auto" >}}
+
+4. There you go! In your torrent list, you should see it successfully downloading and the progress bar advancing. You can also see information such as your download speed, peers and ETA for when it will be finished.
+{{< image src="/pics/qbittorrent/qbittorrent-16.png" alt="" title="" loading="auto" >}}
+
+If that successfully downloads and swaps to 'Seeding' mode then you are all good! If you are feeling advanced, you can even look inside your `_MEDIA_PATH_/downloads/torrents` directory: you should see the Debian ISO in there.
+
+All our testing is done. Let's clear this up for the future. Click on the Debian torrent to select it, then click the red 'Remove Torrent' trash icon in the top left. Select the 'Also remove the content files' because we don't need to keep the ISO on our disk taking up space. Then click 'Remove'.
+
+{{< image src="/pics/qbittorrent/qbittorrent-17.png" alt="" title="" loading="auto" >}}
 
 
 ## That's done! 🎉
 
-Looking good! Now we can move forward with [SABnzbd](/docs/configure/sabnzbd).
+Looking good! Now we can move forward with [SABnzbd](/docs/configure/sabnzbd). Remember, SABnzbd is an optional Usenet downloader and you may have not have enabled it during the install script. If you are using it, continue onto [Radarr](/docs/configure/radarr) instead!
