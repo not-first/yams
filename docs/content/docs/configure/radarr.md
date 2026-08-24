@@ -17,10 +17,10 @@ Check out their website [here](https://radarr.video/).
 
 ## Initial configuration
 
-In your browser, go to [http://{your-ip-address}:7878/](). First up, we need to set up some basic security.
+In your browser, go to [http://_USER_IP_:7878/](http://_USER_IP_:7878/).
 
 - Select "Forms (Login Page)" as the "Authentication Method"
-- In "Authentication Required" select "Disabled for Local Addresses" (this way you won't need to login when you're at home)
+- Optionally, in "Authentication Required" select "Disabled for Local Addresses" (this means you won't need to login when you're at home - but neither will any other device on your network!)
 
 Fill in your username and password, then click on save:
 
