@@ -6,19 +6,17 @@ title: SABnzbd
 
 ## Note - SABnzbd is optional
 
-SABnzbd is an optional component. If you prefer to use torrents exclusively, you can skip this section and proceed to the [Radarr configuration](/docs/configure/radarr). To use SABnzbd, you will need a Usenet server and indexers, which are typically paid services.
+SABnzbd is an optional component. If you prefer to use torrents exclusively, you can skip this section and proceed to the [Radarr configuration](/docs/configure/radarr). **To use SABnzbd, you will need a Usenet server and indexers, which are typically paid services.**
 
 ## What is SABnzbd?
 
-From their [website](https://sabnzbd.org/):
+SABnzbd is a Usenet downloader. Similarly to how qBitTorrent manages downloads from the BitTorrent network, Sabnzbd deals with Usenet files. Pretty easy! 😎
 
-> SABnzbd is a program to download binary files from Usenet servers. Many people upload all sorts of interesting material to Usenet and you need a special program to get this material with the least effort.
-
-So basically, SABnzbd is going to help us download stuff from Usenet servers. Pretty cool! 😎
+Check out their website [here](https://sabnzbd.org/).
 
 ## Initial configuration
 
-In your browser, go to [http://{your-ip-address}:8080/]() and you'll see SABnzbd's setup page. First, choose your language and click on "Start Wizard":
+In your browser, go to [http://_USER_IP_:8090/](http://_USER_IP_:8090/) and you'll see SABnzbd's setup page. First, choose your language and click on "Start Wizard":
 
 {{< image src="/pics/sabnzbd/sabnzbd-1.png" alt="" title="" loading="auto" >}}
 
