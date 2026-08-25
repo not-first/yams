@@ -22,67 +22,59 @@ In your browser, go to [http://_USER_IP_:7878/](http://_USER_IP_:7878/).
 - Select "Forms (Login Page)" as the "Authentication Method"
 - Optionally, in "Authentication Required" select "Disabled for Local Addresses" (this means you won't need to login when you're at home - but neither will any other device on your network!)
 
-Fill in your username and password, then click on save:
-
-{{< image src="/pics/radarr/radarr-18.png" alt="" title="" loading="auto" >}}
-
-You'll see Radarr's empty page. Don't worry about those 3 messages in the system tab - we'll deal with them soon!
+Fill a username and password to use as your new personal account, then click on save:
 
 {{< image src="/pics/radarr/radarr-1.png" alt="" title="" loading="auto" >}}
 
-### Media management
-
-First things first - let's tell Radarr how to handle our movies. Go to "Settings" and then "Media management". On this screen:
-- Click on "Show Advanced" (don't worry, we'll keep it simple!)
-- Check the "Rename Movies" box
-- Change "Standard Movie Format" to `{Movie Title} ({Release Year})`
+You'll see Radarr's empty page. Don't worry about those 3 messages in the system tab - we'll deal with them soon!
 
 {{< image src="/pics/radarr/radarr-2.png" alt="" title="" loading="auto" >}}
 
-At the bottom of the same screen, go to "Root folders" and click on "Add Root Folder".
+### Media management
 
+First things first  let's tell Radarr where to actually put our finished movies.
+In the sidebar, click 'Settings' then 'Media Management' and scroll to the bottom. Click the button labelled 'Add Root Folder'.
 {{< image src="/pics/radarr/radarr-3.png" alt="" title="" loading="auto" >}}
 
 Now add the `/data/movies/` folder:
 
 {{< image src="/pics/radarr/radarr-4.png" alt="" title="" loading="auto" >}}
 
-**Note:** This isn't actually on your filesystem! The `/data/movies/` folder exists inside the docker environment and maps to your server's `/mediafolder/media/movies/` folder. Magic! ✨
+> [!INFO]
+> Remember, this isn't actually on your filesystem! The `/data/movies/` folder exists inside the docker environment and maps to your server's `_MEDIA_PATH_/movies/` folder. Check out [our quick guide](http://localhost:1313/docs/fundamentals/docker-and-compose/#volumes) if you are unsure what this means!
 
-Finally, click on "Save Changes".
-
-{{< image src="/pics/radarr/radarr-5.png" alt="" title="" loading="auto" >}}
+Easy peasy. Now, Radarr knows where to store and organise its movies.
 
 ### Download Clients
 
-Time to connect Radarr to our download tools! This is where we'll link up with [qBittorrent](/docs/configure/qbittorrent) and [SABnzbd](/docs/configure/sabnzbd).
+Time to connect Radarr to our download tools! This is where we'll link it up with [qBittorrent](/docs/configure/qbittorrent) and [SABnzbd](/docs/configure/sabnzbd) (if you use it).
 
 #### qBittorrent Setup
 
-In "Settings", go to "Download Clients" and click on the ➕ button.
+In 'Settings', go to 'Download Clients' and click on the ➕ button.
 
-{{< image src="/pics/radarr/radarr-13.png" alt="" title="" loading="auto" >}}
+{{< image src="/pics/radarr/radarr-5.png" alt="" title="" loading="auto" >}}
 
 On the "Add Download Client" screen, scroll down and click on "qBittorrent".
 
-{{< image src="/pics/radarr/radarr-14.png" alt="" title="" loading="auto" >}}
+{{< image src="/pics/radarr/radarr-6.png" alt="" title="" loading="auto" >}}
 
 Fill in these details:
 - Name: qBittorrent (or whatever you want to call it!)
-- Host: your server IP address (like `192.168.0.190`)
+- Host: `gluetun` (since it is running masked *behind* the Gluetun VPN container)
 - Port: 8081
-- Username: `admin`
-- Password: your qBittorrent password
+- API Key: Your qBitTorrent API key [you generated earlier](/docs/content/docs/configure/qbittorrent#generating-an-api-key). It is probably in your `_INSTALL_PATH_/.env`, you could copy it over from there.
+All other settings can stay the same.
 
-{{< image src="/pics/radarr/radarr-15.png" alt="" title="" loading="auto" >}}
+{{< image src="/pics/radarr/radarr-7.png" alt="" title="" loading="auto" >}}
 
 Click that "Test" button at the bottom - if everything's good, you'll see a nice green checkmark! ✅
-{{< image src="/pics/radarr/radarr-10.png" alt="" title="" loading="auto" >}}
-{{< image src="/pics/radarr/radarr-11.png" alt="" title="" loading="auto" >}}
+{{< image src="/pics/radarr/radarr-8.png" alt="" title="" loading="auto" >}}
+{{< image src="/pics/radarr/radarr-9.png" alt="" title="" loading="auto" >}}
 
 If the test passed, click "Save". Your download client should now show up on the page:
 
-{{< image src="/pics/radarr/radarr-16.png" alt="" title="" loading="auto" >}}
+{{< image src="/pics/radarr/radarr-10.png" alt="" title="" loading="auto" >}}
 
 #### SABnzbd Setup
 
@@ -114,8 +106,4 @@ If the test worked, hit "Save". You should now see both download clients on the 
 
 ## Moving forward! 🚀
 
-Looking good! Now we can continue with [Sonarr](/docs/configure/sonarr). We're getting closer to having your own personal Netflix!
-
-## Want to get really fancy?
-
-If you want to dive deeper into Radarr's configuration, I highly recommend checking out the [TRaSH Guide for Radarr](https://trash-guides.info/Radarr/). They've got some really cool advanced settings in there! 🔧
+Looking good! Now we can continue with [Sonarr](/docs/configure/sonarr), which is essentially just repeating the same steps.
