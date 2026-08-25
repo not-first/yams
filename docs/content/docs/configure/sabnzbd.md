@@ -20,7 +20,7 @@ In your browser, go to [http://_USER_IP_:8090/](http://_USER_IP_:8090/) and you'
 
 {{< image src="/pics/sabnzbd/sabnzbd-1.png" alt="" title="" loading="auto" >}}
 
-Next up, you'll need to choose a Usenet server. [Newshosting](https://www.newshosting.com/) usually has good deals going on, but you can use whatever server you prefer!
+Next up, you'll need to choose a Usenet server. [Newshosting](https://www.newshosting.com/) usually has good deals going on, but you can use whatever provider you prefer!
 
 When you've got your server details ready, input them and click on "Next".
 
@@ -28,9 +28,7 @@ When you've got your server details ready, input them and click on "Next".
 
 You should now see the final wizard page - congrats! 🎉
 
-You'll notice the Completed and Uncompleted download folders aren't quite where we want them. Don't worry, we'll fix that in a minute!
-
-For now, just click on "Go to SABnzbd".
+You'll notice the Completed and Uncompleted download folders aren't quite where we want them. Don't worry, we'll fix that in a second. First, click on "Go to SABnzbd".
 
 {{< image src="/pics/sabnzbd/sabnzbd-3.png" alt="" title="" loading="auto" >}}
 
@@ -38,20 +36,22 @@ Head over to the settings page by clicking on the cog-wheel icon in the top righ
 
 {{< image src="/pics/sabnzbd/sabnzbd-4.png" alt="" title="" loading="auto" >}}
 
-On the "General" page, set the "External internet access" to "Full API" and click on "Save Changes"
-
-{{< image src="/pics/sabnzbd/sabnzbd-7.png" alt="" title="" loading="auto" >}}
-
-Now, click on "Folders" and let's get those paths sorted:
+On the 'Folders' page, let's get those paths sorted:
 - Set your "Temporary Download Folder" to `/data/downloads/usenet/incomplete`
 - Set your "Completed Download Folder" to `/data/downloads/usenet/complete`
 - Click on "Save Changes"
 
 {{< image src="/pics/sabnzbd/sabnzbd-5.png" alt="" title="" loading="auto" >}}
 
+On the "General" page, set the "External internet access" to "Full API" and click on "Save Changes"
+
+{{< image src="/pics/sabnzbd/sabnzbd-7.png" alt="" title="" loading="auto" >}}
+
+
+
 ## Getting your API key for Sonarr and Radarr
 
-You'll need this API key later when we set up Radarr and Sonarr. Feel free to skip this section for now if you want - you can always come back!
+You'll need this API key later when we set up Radarr and Sonarr. You can either save it now, or feel free to skip this section and come back later!
 
 To get your API key:
 
