@@ -88,7 +88,7 @@ First, go to the "Downloads" tab and set the "Default Save Path" to `/data/downl
 ### Configuring Web UI Settings
 
 Next, go to the "Web UI" tab.
-First, set a new username and password and save it securely externally.
+First, set a new username and password to use for your personal account and save it securely externally.
 
 Next, tick the `Bypass authentication for clients in whitelisted IP subnets` setting and add in your local subnet (note the value in the image may not be *your* subnet). This is an **optional step** which increases ease of use but results in a slightly less secure qBitTorrent instance. If this option is not enabled, you will have to sign in every single time you open qBitTorrent.
 
