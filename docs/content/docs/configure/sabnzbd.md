@@ -43,15 +43,25 @@ On the 'Folders' page, let's get those paths sorted:
 
 {{< image src="/pics/sabnzbd/sabnzbd-5.png" alt="" title="" loading="auto" >}}
 
-On the "General" page, set the "External internet access" to "Full API" and click on "Save Changes"
+Now, lets ensure that Radarr and Sonarr will be able to connect to SABnzbd. Go to the 'Special' page in the settings (top right) and scroll to the very bottom.
+There should be a field called `host_whitelist()`. These are the hostnames that SABnzbd allows incoming connections from. Add a comma, then add the word 'gluetun'. Since SABnzbd is running behind the VPN, Radarr and Sonarr must access it through Gluetun, so we wil allow this! Save the changes.
 
-{{< image src="/pics/sabnzbd/sabnzbd-7.png" alt="" title="" loading="auto" >}}
+> The random value that will exist already is simply the ID of the SABnzbd docker container. **Don't touch/change this!**
+
+{{< image src="/pics/sabnzbd/sabnzbd-6.png" alt="" title="" loading="auto" >}}
 
 
+## Optional - Set Username and Password
+
+It can be a good idea to set up some account credentials so that no other machines on our local network can connect to SABnzbd. Just like how bypassing qBitTorrent authentication for local devices is optional, this technically is too. However this time we are opting *in* to be secure rather than *out*, and its always better to be slightly more secure. Just in case!
+
+To create a username and password to login to Sabnzbd securely, click the 'General' tab inside of settings. Scroll down to the 'Security' section. Here, make up a new username nas password (please make yours more secure than mine) and hit 'Save Changes'!
+
+{{< image src="/pics/sabnzbd/sabnzbd-8.png" alt="" title="" loading="auto" >}}
 
 ## Getting your API key for Sonarr and Radarr
 
-You'll need this API key later when we set up Radarr and Sonarr. You can either save it now, or feel free to skip this section and come back later!
+You'll need this API key later when we set up Radarr and Sonarr. You can either save it now, or feel free to skip this section and come back later. *Radarr setup is next, so if you are continuing the setup in this session it's easier just to grab it now, or at least keep the page open 😝.*
 
 To get your API key:
 
@@ -61,7 +71,7 @@ First, head back to the settings.
 
 Then, go to "General" and scroll down to "Security". You'll find your API Key right there!
 
-{{< image src="/pics/sabnzbd/sabnzbd-6.png" alt="" title="" loading="auto" >}}
+{{< image src="/pics/sabnzbd/sabnzbd-7.png" alt="" title="" loading="auto" >}}
 
 ## That's done! 🎉
 
