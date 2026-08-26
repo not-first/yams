@@ -64,7 +64,7 @@ Fill in these details:
 - Host: `gluetun` (since it is running masked *behind* the Gluetun VPN container)
 - Port: 8081
 - API Key: Your qBitTorrent API key [you generated earlier](/docs/content/docs/configure/qbittorrent#generating-an-api-key). It is probably in your `_INSTALL_PATH_/.env`, you could copy it over from there.
-All other settings can stay the same.
+- All other settings can stay the same.
 
 {{< image src="/pics/radarr/radarr-7.png" alt="" title="" loading="auto" >}}
 
@@ -78,32 +78,36 @@ If the test passed, click "Save". Your download client should now show up on the
 
 #### SABnzbd Setup
 
+> [!INFO]
+> If you are not using SABnzbd you can safely skip this section.
+
 Back in "Download Clients", click that ➕ button again.
 
-{{< image src="/pics/radarr/radarr-13.png" alt="" title="" loading="auto" >}}
+{{< image src="/pics/radarr/radarr-11.png" alt="" title="" loading="auto" >}}
 
 This time, scroll down and pick "SABnzbd".
 
-{{< image src="/pics/radarr/radarr-19.png" alt="" title="" loading="auto" >}}
+{{< image src="/pics/radarr/radarr-12.png" alt="" title="" loading="auto" >}}
 
 Fill in these details:
 - Name: SABnzbd (or any name you like)
-- Host: your server IP address (like `192.168.0.190`)
+- Host: `gluetun` (since it is running masked *behind* the Gluetun VPN container)
 - Port: 8080
-- API Key: your SABnzbd API key
+- API Key: your SABnzbd API key from before
+- All other settings can stay the same.
 
-Don't have your SABnzbd API key handy? No worries! You can find it here: [Getting your API key for Sonarr and Radarr](/docs/configure/sabnzbd/#getting-your-api-key-for-sonarr-and-radarr)
+> Don't have your SABnzbd API key handy? No worries! You can find it here: [Getting your API key for Sonarr and Radarr](/docs/configure/sabnzbd/#getting-your-api-key-for-sonarr-and-radarr)
 
-{{< image src="/pics/radarr/radarr-20.png" alt="" title="" loading="auto" >}}
+{{< image src="/pics/radarr/radarr-23.png" alt="" title="" loading="auto" >}}
 
 Time for another test! Click that "Test" button - hopefully you'll see another green checkmark! ✅
-{{< image src="/pics/radarr/radarr-10.png" alt="" title="" loading="auto" >}}
-{{< image src="/pics/radarr/radarr-11.png" alt="" title="" loading="auto" >}}
+{{< image src="/pics/radarr/radarr-8.png" alt="" title="" loading="auto" >}}
+{{< image src="/pics/radarr/radarr-9.png" alt="" title="" loading="auto" >}}
 
 If the test worked, hit "Save". You should now see both download clients on the page:
 
-{{< image src="/pics/radarr/radarr-21.png" alt="" title="" loading="auto" >}}
+{{< image src="/pics/radarr/radarr-14.png" alt="" title="" loading="auto" >}}
 
 ## Moving forward! 🚀
 
-Looking good! Now we can continue with [Sonarr](/docs/configure/sonarr), which is essentially just repeating the same steps.
+Looking good! Now we can continue with [Sonarr](/docs/configure/sonarr). It's essentially just repeating the same steps but for our TV show configuration instead 😵‍💫.
