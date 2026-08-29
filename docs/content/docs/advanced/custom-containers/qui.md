@@ -136,7 +136,7 @@ It can be smart to set a seeding limit slightly longer than the actual seeding r
 
 #### Workflow 1: Tagging non-hardlinked torrents
 
- > Optional manual import link [here](https://gist.github.com/not-first/874d6186a77b9057fe290ee2a1884817#file-tag-nohl-json).
+ > Optional manual import link [here](https://gist.githubusercontent.com/not-first/874d6186a77b9057fe290ee2a1884817/raw/249507d231284a350d9e07b25e66a469db68ac97/tag-noHL.json).
 
 {{< image src="/pics/qui/qui-3.png" alt="" title="" loading="auto" >}}
 
@@ -153,7 +153,7 @@ Finally, add an action to tag the torrent with `noHL`, and save.
 
 #### Workflow 2: Applying seeding requirements
 
- > Optional manual import link [here](https://gist.githubusercontent.com/not-first/874d6186a77b9057fe290ee2a1884817/raw/86e1360be2fd5d5a2e40014e8ff4c27a91b15715/enforce-requirements-EXAMPLE.json).
+ > Optional manual import link [here](https://gist.githubusercontent.com/not-first/874d6186a77b9057fe290ee2a1884817/raw/249507d231284a350d9e07b25e66a469db68ac97/enforce-requirements-EXAMPLE.json).
 
 {{< image src="/pics/qui/qui-4.png" alt="" title="" loading="auto" >}}
 
