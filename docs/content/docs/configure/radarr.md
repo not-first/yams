@@ -63,7 +63,7 @@ Fill in these details:
 - Name: qBittorrent (or whatever you want to call it!)
 - Host: `gluetun` (since it is running masked *behind* the Gluetun VPN container)
 - Port: 8081
-- API Key: Your qBitTorrent API key [you generated earlier](/docs/content/docs/configure/qbittorrent#generating-an-api-key). It is probably in your `_INSTALL_PATH_/.env`, you could copy it over from there.
+- API Key: Your qBitTorrent API key [you generated earlier](/docs/configure/qbittorrent/#generating-an-api-key). It is probably in your `_INSTALL_PATH_/.env`, you could copy it over from there.
 - All other settings can stay the same.
 
 {{< image src="/pics/radarr/radarr-7.png" alt="" title="" loading="auto" >}}
@@ -98,7 +98,7 @@ Fill in these details:
 
 > Don't have your SABnzbd API key handy? No worries! You can find it here: [Getting your API key for Sonarr and Radarr](/docs/configure/sabnzbd/#getting-your-api-key-for-sonarr-and-radarr)
 
-{{< image src="/pics/radarr/radarr-23.png" alt="" title="" loading="auto" >}}
+{{< image src="/pics/radarr/radarr-13.png" alt="" title="" loading="auto" >}}
 
 Time for another test! Click that "Test" button - hopefully you'll see another green checkmark! ✅
 {{< image src="/pics/radarr/radarr-8.png" alt="" title="" loading="auto" >}}

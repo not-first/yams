@@ -39,7 +39,7 @@ Please visit [zavan/yams on GitLab](https://gitlab.com/zavan/yams) to access the
 ## Advanced Usage
 
 ### How do I add custom containers?
-Easy! Check out our [Adding Custom Containers](/docs/advanced/adding-your-own-containers/) guide. You can add any Docker container to work alongside YAMS.
+Easy! Check out our [Adding Custom Containers](/docs/advanced/custom-containers/) guide. You can add any Docker container to work alongside YAMS.
 
 ### Can I modify YAMS's default settings?
 Absolutely! While YAMS comes with sensible defaults, you can customize:
@@ -58,7 +58,7 @@ Check out [TRaSH Guides](https://trash-guides.info/) - they're fantastic for dee
 Yes! Everything's documented in the [VPN guide](https://github.com/qdm12/gluetun-wiki/blob/main/setup/connect-a-container-to-gluetun.md). Your Docker Compose file is in your install directory at `/opt/yams/docker-compose.yaml` (or your custom install location).
 
 ### Which VPN providers work with YAMS?
-We support many popular providers! Check our [VPN Configuration](/docs/advanced/concept-explanations/vpn/) page for the full list.
+We support many popular providers! Check our [VPN Configuration](/docs/advanced/vpn/) page for the full list.
 
 ## Troubleshooting
 
@@ -196,7 +196,7 @@ If your VPN isn't working, let's troubleshoot step by step:
 ### qBittorrent Not Accessible 🔒
 
 1. **Check if VPN is Enabled**
-   - Review [VPN Configuration](/docs/advanced/concept-explanations/vpn/)
+   - Review [VPN Configuration](/docs/advanced/vpn/)
    - Run VPN check:
      ```bash
      yams check-vpn
