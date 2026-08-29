@@ -94,22 +94,13 @@ Enter the following details:
 - A name for the instance, e.g. 'Server'
 - Your qBitTorrent URL. If you are running qBitTorrent behind your vpn, its URL will be `http://gluetun:8081`. Otherwise, it will be `http://qbittorrent:8081`.
 - Turn on 'Local Filesystem Access' - this is required for hardlink detection to work.
-- Enter your qBitTorrent username and password.
+- Select 'API Key' as the authentication type and paste in your qBitTorrent API key.
 
 {{< image src="/pics/qui/qui-1.png" alt="" title="" loading="auto" >}}
 
 Then, hit 'Add Instance'! In the sidebar, you should now see your qBitTorrent instance listed. Click on it to connect, and you should see your torrents load up.
 
 This is your main Qui interface, equivalent to the qBitTorrent web UI. Save this URL for later if you ever want quick access!
-
-## Disabling Auto Remove in Radarr/Sonarr
-
-Radarr and Sonarr both have built in features that can automatically remove stopped torrents they have imported. We DO NOT want this enabled, as it will unexpectedly and silently interfere with any workflows we may create.
-
-{{< image src="/pics/qui/qui-8.png" alt="" title="" loading="auto" >}}
-
-Navigate to Radarr and Sonarr's settings > 'Download Clients' section > qBitTorrent > ensure the 'Remove Completed' checkbox at the bottom is disabled. Do this in both Radarr and Sonarr.
-
 
 ## Setting up Automations ⚙️
 
@@ -134,20 +125,18 @@ Tags will be used to link the workflows together and provide visual cues if you 
 
 The workflows we will create are as follows:
 1. A workflow to tag non-hardlinked torrents with a `noHL` tag.
-2. A workflow to apply seeding requirements (through qBitTorrent 'limits') to `noHL` tagged torrents.
-3. A workflow to tag finished torrents with `readyToDelete` once they have met their seeding requirements and been stopped.
-4. A workflow to delete torrents tagged with `readyToDelete`.
+2. A workflow to 'limit' torrents to seed for the minimum amount of time, if they haven't already
 
 Lets say a torrent is downloaded from a private tracker with a 7 day seeding requirement, and is deleted from the media library after 3 days. The workflow will work like this:
 - The torrent is tagged with `noHL` as it has no hardlink (the media file only has 1 reference on disk, the one in the downloads folder).
-- The torrent will have a 7-day seeding limit applied to it. It will be tagged with `seedingRequired` until it has seeded for 7 days.
-- After seeding for 7 days, the torrent will be tagged with `readyToDelete`, and stopped. Then, it will be deleted.
+- The torrent will have a 7-day seeding limit applied to it.
+- After seeding for 7 days, the torrent will be stopped by qBitTorrent. Then, it will be deleted by Radarr/Sonarr who recognise the torrent is finished.
 
 It can be smart to set a seeding limit slightly longer than the actual seeding requirement, to account for any small discrepancies in time tracking. For example, if the seeding requirement is 7 days, set the limit to 8 days.
 
 #### Workflow 1: Tagging non-hardlinked torrents
 
- > Optional manual import link [here](https://gist.githubusercontent.com/not-first/874d6186a77b9057fe290ee2a1884817/raw/d796a3133880c155ad9b56b676624a86f5a9dd69/tag-noHL.json).
+ > Optional manual import link [here](https://gist.github.com/not-first/874d6186a77b9057fe290ee2a1884817#file-tag-nohl-json).
 
 {{< image src="/pics/qui/qui-3.png" alt="" title="" loading="auto" >}}
 
@@ -173,41 +162,11 @@ Create a new rule, and name the workflow 'Enforce Seeding Requirements (TRACKER 
 In the trackers section, select the tracker(s) this workflow will apply to. This ensures that only torrents from this tracker will have seeding requirements applied to them.
 
 Add a condition that checks if the torrent is tagged with `noHL`, using the tags contains operator.
-Add another condition that checks if the torrent's seeding time is less than the seeding requirement for the tracker.
 
-Add an action to set a seeding time or ratio limit on the torrent. This is done by selecting 'Set Limit' as the action type, and then setting the seeding time limit to match the seeding requirements of your tracker, e.g 7 days (make sure to enter it in minutes!). Save the workflow, and repeat this process for each tracker you download from with different seeding requirements.
+Add an action to set a share limit on the torrent. Then set the seeding time limit to match the seeding requirements of your tracker, e.g 7 days (make sure to enter it in minutes!). Save the workflow, and repeat this process for each tracker you download from with different seeding requirements.
 
-Finally, add an action to tag the torrent with `seedingRequired`, and save.
-
-It can be a good idea to enter in a value slightly more than the actual seeding requirement, to account for any small discrepancies in time tracking.
-
-One of these should be added for each tracker you download from with different seeding requirements.
-
-#### Workflow 3: Tagging ready-to-delete torrents
-
-> Optional manual import link [here](https://gist.githubusercontent.com/not-first/874d6186a77b9057fe290ee2a1884817/raw/d54a84d62a7271e2b85fca536df3eec0c22c920a/tag-ready-to-delete.json).
-
-{{< image src="/pics/qui/qui-6.png" alt="" title="" loading="auto" >}}
-
-Create a new rule, apply it to all trackers, and name the workflow 'Tag Ready to Delete'.
-
-Add a condition that checks if the torrent is not tagged with `seedingRequired`, and another condition that checks if the torrent is tagged with `noHL`, using the tags contains operator.
-Add a third condition that checks if the torrent's state is 'Stopped', to ensure only torrents that have met their seeding requirements, and thus been stopped by qBitTorrent, are tagged.
-
-Add an action to tag the torrent with `toBeDeleted`, and save.
-
-#### Workflow 5: Deleting retired torrents after 7 days
-
-> Optional manual import link [here](https://gist.githubusercontent.com/not-first/874d6186a77b9057fe290ee2a1884817/raw/4183b34922eca4009f772e8d9d0a377e0ea3cc02/delete-torrents.json).
-
-{{< image src="/pics/qui/qui-7.png" alt="" title="" loading="auto" >}}
-
-Create a new rule, apply it to all trackers, and name the workflow 'Delete Torrents'.
-
-Add a condition that checks if the torrent is tagged with `toBeDeleted`, using the tags contains operator.
-
-Add an action to delete the torrent with files (preserve cross-seeds), and save.
-
+*It can be a good idea to enter in a value slightly more than the actual seeding requirement, to account for any small discrepancies in time tracking.
+*
 ---
 
 And that's it! You now have a fully automated seeding setup that ensures you are always seeding your media files until you are done with them, at which point they are seamlessly removed from your server after meeting any seeding requirements.
