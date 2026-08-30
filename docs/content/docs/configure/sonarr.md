@@ -110,4 +110,4 @@ If the test worked, hit "Save". You should now see both download clients on the 
 
 ## Moving forward!
 
-Looking good! Now we can continue with [Lidarr](/docs/configure/sonarr). It's essentially just repeating the same thing *again* but for our book configuration instead 😵‍💫. Remember that Lidarr is an optional application that you may have disabled in the installer!
+Looking good! Now we can continue with [Lidarr](/docs/configure/sonarr). It's essentially just repeating the same thing *again* but for our music configuration instead 😵‍💫. Remember that Lidarr is an optional application that you may have disabled in the installer!
