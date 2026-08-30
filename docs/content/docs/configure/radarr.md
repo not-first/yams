@@ -26,7 +26,7 @@ Fill a username and password to use as your new personal account, then click on 
 
 {{< image src="/pics/radarr/radarr-1.png" alt="" title="" loading="auto" >}}
 
-You'll see Radarr's empty page. Don't worry about those 3 messages in the system tab - we'll deal with them soon!
+You'll see Radarr's empty page.
 
 {{< image src="/pics/radarr/radarr-2.png" alt="" title="" loading="auto" >}}
 
@@ -41,7 +41,7 @@ Now add the `/data/movies/` folder:
 {{< image src="/pics/radarr/radarr-4.png" alt="" title="" loading="auto" >}}
 
 > [!INFO]
-> Remember, this isn't actually on your filesystem! The `/data/movies/` folder exists inside the docker environment and maps to your server's `_MEDIA_PATH_/movies/` folder. Check out [our quick guide](http://localhost:1313/docs/fundamentals/docker-and-compose/#volumes) if you are unsure what this means!
+> Remember, this isn't actually on your filesystem! The `/data/movies/` folder exists inside the docker environment and maps to your server's `_MEDIA_PATH_/movies/` folder. Check out [our quick guide](/docs/fundamentals/docker-and-compose/#volumes) if you are unsure what this means!
 
 Easy peasy. Now, Radarr knows where to store and organise its movies.
 
