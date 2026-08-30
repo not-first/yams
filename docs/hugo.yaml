@@ -39,8 +39,11 @@ markup:
 menu:
   home:
     - name: "Documentation"
-      pageRef: "/docs/"
-      weight: 10
+      url: "/docs/"
+      weight: 1
+    - name: "Discord"
+      url: "https://discord.gg/Gwae3tNMST"
+      weight: 2
   after:
     - name: "Gitea"
       url: "https://git.rogs.me/rogs/yams"
