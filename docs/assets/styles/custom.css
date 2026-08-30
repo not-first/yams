@@ -286,7 +286,9 @@ a[href] .ph {
   border-radius: 0.35rem;
   background: transparent;
   opacity: 0.8;
-  transition: opacity 0.15s ease, transform 0.15s ease;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
 }
 
 .book-toc-links__icons a:hover,
