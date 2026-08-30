@@ -264,6 +264,44 @@ a[href] .ph {
   --color-accent-danger: var(--color-accent-caution);
 }
 
+.book-toc-links {
+  margin-top: 1.35rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--gray-200);
+}
+
+.book-toc-links__icons {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.book-toc-links__icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border: 0;
+  border-radius: 0.35rem;
+  background: transparent;
+  opacity: 0.8;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.book-toc-links__icons a:hover,
+.book-toc-links__icons a:focus-visible {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.book-toc-links__icons img {
+  width: 1.25rem;
+  height: 1.25rem;
+  object-fit: contain;
+  filter: var(--icon-filter);
+}
+
 @media (max-width: 768px) {
   .card-row,
   .interactive-path-panel .panel-grid-3 {
