@@ -14,20 +14,20 @@
     const toggle = document.getElementById('theme-toggle');
     if (!toggle) return;
 
-    function setTheme(theme) {
+    function updateToggle(theme) {
       const isDark = theme === 'dark';
-      document.documentElement.dataset.theme = theme;
-      document.documentElement.style.colorScheme = theme;
       toggle.setAttribute('aria-pressed', String(isDark));
+      toggle.querySelector('.theme-toggle-label').textContent = isDark ? 'Light theme' : 'Dark theme';
     }
 
-    setTheme(document.documentElement.dataset.theme || 'light');
+    const theme = window.YamsTheme;
+    if (!theme) return;
+
+    updateToggle(theme.get());
     toggle.addEventListener('click', function () {
-      const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-      if (window.YamsPlaceholders) {
-        window.YamsPlaceholders.set('yams-theme', nextTheme);
-      }
-      setTheme(nextTheme);
+      const nextTheme = theme.get() === 'dark' ? 'light' : 'dark';
+      theme.set(nextTheme);
+      updateToggle(nextTheme);
     });
   })();
 </script>
