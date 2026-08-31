@@ -44,19 +44,6 @@ menu:
     - name: "Discord"
       url: "https://discord.gg/Gwae3tNMST"
       weight: 2
-  after:
-    - name: "Gitea"
-      url: "https://git.rogs.me/rogs/yams"
-      weight: 1
-    - name: "GitLab"
-      url: "https://gitlab.com/rogs/yams"
-      weight: 2
-    - name: "GitHub"
-      url: "https://github.com/rogsme/yams"
-      weight: 3
-    - name: Discord
-      url: "https://discord.gg/Gwae3tNMST"
-      weight: 4
 taxonomies:
   tag: tags
 
@@ -120,7 +107,7 @@ params:
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables service worker that caches visited pages and resources for offline use.
   # can be false, true or 'precache', precache will try to download all content pages on install.
-  BookServiceWorker: "precache"
+  BookServiceWorker: "false"
 
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables a drop-down menu for translations only if a translation is present.
