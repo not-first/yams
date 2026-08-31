@@ -2,12 +2,12 @@
 - [ ] Finalise installer script and templates
 - [ ] Website
   - [ ] Website content
-    - [ ] Main guide
-      - [ ] Dozzle
-      - [ ] qBittorrent
-      - [ ] SABnzbd
-      - [ ] Radarr
-      - [ ] Sonarr
+    - [x] Main guide
+      - [x] Dozzle
+      - [x] qBittorrent
+      - [x] SABnzbd
+      - [x] Radarr
+      - [x] Sonarr
       - [ ] Lidarr
       - [ ] Prowlarr
       - [ ] Bazarr
@@ -20,7 +20,7 @@
     - [ ] Change wording of remote access guide
     - [ ] Update portainer guide to account for the fact it is now an optional addon
     - [ ] Update Prowlarr guide to use http proxy
-    - [ ] Write port forwarding page (how to enable/disable it, how to automatically change the forwarded port)
+    - [x] Write port forwarding page (how to enable/disable it, how to automatically change the forwarded port)
   - [ ] Website functionality
     - [ ] Film asciinema of setup process for use on landing + what is YAMS page
     - [ ] Create new landing page
@@ -30,9 +30,8 @@
       - [x] Fix colours
       - [ ] Alter structure of YAMS icon/anything else to feel better
     - [ ] Add Unami analytics
-    - [ ] Finalise placeholder functionality
+    - [x] Finalise placeholder functionality
       - [x] Allow use in markdown links to open in new tab (use these for service/dozzle links directly in docs)
-      - [ ] Think of and implement a good way to edit these values
     - [x] Add dynamic dozzle user generation command + any other interactive components
     - [x] Add copy button to command code blocks
 - [ ] Add proper website deploying
