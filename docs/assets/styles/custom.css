@@ -76,6 +76,8 @@ pre:active,
   background: transparent;
   padding: 1rem;
   margin: 1.5rem 0;
+  border-radius: var(--border-radius) !important;
+  overflow: hidden;
 }
 
 .interactive-path-panel .panel-header {
@@ -131,7 +133,9 @@ pre:active,
   align-items: stretch;
   margin-top: 1rem;
   border: 1px solid var(--gray-200);
-  background: var(--body-background);
+  background: color-mix(in srgb, var(--gray-100) 70%, transparent);
+  border-radius: var(--border-radius) !important;
+  overflow: hidden;
 }
 
 .dozzle-command-row code {
@@ -141,6 +145,9 @@ pre:active,
   overflow-x: auto;
   white-space: pre-wrap;
   word-break: break-word;
+  background: transparent;
+  border: 0 !important;
+  border-radius: 0 !important;
 }
 
 .book-copy-container {

@@ -89,8 +89,12 @@ pre,
     font-size: 0.95rem;
     opacity: 0.85;
 
-    p:first-child { margin-top: 0 !important; }
-    p:last-child { margin-bottom: 0 !important; }
+    p:first-child {
+      margin-top: 0 !important;
+    }
+    p:last-child {
+      margin-bottom: 0 !important;
+    }
   }
 }
 
@@ -100,7 +104,9 @@ pre,
   gap: 1rem;
   margin: 1.5rem 0;
 
-  .simple-card { margin: 0 !important; }
+  .simple-card {
+    margin: 0 !important;
+  }
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -112,31 +118,47 @@ pre,
   background: transparent;
   padding: 1rem;
   margin: 1.5rem 0;
-  border-radius: 0 !important;
+  border-radius: var(--border-radius) !important;
+  overflow: hidden;
 
   .panel-header {
     margin-bottom: 1rem;
-    h3 { margin: 0 0 0.25rem 0 !important; font-size: 1.05rem; font-weight: bold; }
-    p { margin: 0 !important; font-size: 0.85rem; opacity: 0.7; }
+    h3 {
+      margin: 0 0 0.25rem 0 !important;
+      font-size: 1.05rem;
+      font-weight: bold;
+    }
+    p {
+      margin: 0 !important;
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
   }
 
   .panel-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-    @media (max-width: 600px) { grid-template-columns: 1fr; }
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   .panel-grid-3 {
     grid-template-columns: repeat(3, 1fr);
-    @media (max-width: 768px) { grid-template-columns: 1fr; }
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   .input-container {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
-    label { font-size: 0.8rem; font-weight: bold; }
+    label {
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
     input {
       padding: 0.4rem 0.6rem;
       border: 1px solid var(--gray-200);
@@ -145,7 +167,9 @@ pre,
       font-family: monospace;
       font-size: 0.875rem;
       border-radius: 0 !important;
-      &:focus { outline: 1px solid var(--color-link) !important; }
+      &:focus {
+        outline: 1px solid var(--color-link) !important;
+      }
     }
   }
 }
@@ -156,6 +180,9 @@ pre,
   margin-top: 1rem;
   border: 1px solid var(--gray-200);
   background: var(--body-background);
+  border-radius: var(--border-radius) !important;
+  overflow: hidden;
+
   code {
     flex: 1;
     padding: 0.65rem 0.75rem;
@@ -163,11 +190,18 @@ pre,
     overflow-x: auto;
     white-space: pre-wrap;
     word-break: break-word;
+    background: transparent;
+    border: 0 !important;
+    border-radius: 0 !important;
   }
 }
 
-.book-copy-container { position: relative; }
-pre.book-copy-container { padding-right: 3.25rem; }
+.book-copy-container {
+  position: relative;
+}
+pre.book-copy-container {
+  padding-right: 3.25rem;
+}
 
 .book-copy-button {
   position: absolute;
@@ -188,26 +222,45 @@ pre.book-copy-container { padding-right: 3.25rem; }
   cursor: pointer;
   opacity: 0.55;
 
-  img { width: 1.1rem; height: 1.1rem; opacity: 0.85; }
+  img {
+    width: 1.1rem;
+    height: 1.1rem;
+    opacity: 0.85;
+  }
   &.is-copied {
     opacity: 1;
     img {
       opacity: 1;
-      filter: invert(56%) sepia(55%) saturate(650%) hue-rotate(85deg) brightness(92%) contrast(90%);
+      filter: invert(56%) sepia(55%) saturate(650%) hue-rotate(85deg)
+        brightness(92%) contrast(90%);
       animation: copy-success-in 120ms ease-out forwards;
     }
-    &.is-copy-fading img { animation: copy-success-out 120ms ease-in forwards; }
+    &.is-copy-fading img {
+      animation: copy-success-out 120ms ease-in forwards;
+    }
   }
 }
 
 @keyframes copy-success-in {
-  from { transform: scale(0.65); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.65);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes copy-success-out {
-  from { transform: scale(1); opacity: 1; }
-  to { transform: scale(0.65); opacity: 0; }
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.65);
+    opacity: 0;
+  }
 }
 
 .ph {
