@@ -20,6 +20,21 @@ Dozzle is a simple log viewer for Docker containers. It allows you to view the l
 
 ## Configuring Dozzle
 
+### Quick note: using the default editor
+
+When you need to edit a config file in YAMS, the default terminal editor is usually `nano`. This is the easiest option to use for files like `.env`, `docker-compose.yaml`, and other text-based config files. For example:
+
+```bash
+nano _INSTALL_PATH_/.env
+```
+
+- Use the arrow keys to move around
+- Edit the file directly
+- Press `Ctrl+O`, then `Enter` to save
+- Press `Ctrl+X` to exit
+
+This is the simplest way to make changes when the guide tells you to open a file. Of course, feel free to use any other method if you wish!
+
 ### Creating a user
 
 Since Dozzle can perform actions on containers, YAMS creates it with authentication enabled by default. The installer utilises a completely random hash as its default user, meaning it is impossible to sign into the default `yams` account. Its only there to make sure Dozzle doesn't panic about having no user at the very start 😝. But don't worry, we are about to create you one you can actually use!
