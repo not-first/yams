@@ -108,6 +108,8 @@ Lets place this inside our `.env` for easy reference in the future, and so we ca
 QBITTORRENT_API_KEY=qbt_your_api_key
 ```
 
+### Enable automatic port updating
+
 Perfect. Now, complete the following steps **only if you have already set up port forwarding using the YAMS installer:**
 - Open your main docker compose file at `_INSTALL_PATH_/docker-compose.yaml`
 - Find the 'gluetun' container entry

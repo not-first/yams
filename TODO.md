@@ -21,7 +21,7 @@
     - [ ] Change wording of remote access guide
     - [ ] Update portainer guide to account for the fact it is now an optional addon
     - [ ] Update Prowlarr guide to use http proxy
-    - [ ] Write port forwarding page (how to enable/disable it, how to automatically change the forwarded port)
+    - [x] Write port forwarding page (how to enable/disable it, how to automatically change the forwarded port)
   - [ ] Website functionality
     - [ ] Film asciinema of setup process for use on landing + what is YAMS page
     - [ ] Create new landing page
