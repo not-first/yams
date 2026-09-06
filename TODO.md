@@ -4,7 +4,7 @@
 - [ ] Website
   - [ ] Website content
     - [x] Main guide
-      - [x] Dozzle
+      - [ ] Dozzle (update screenshots)
       - [x] qBittorrent
       - [x] SABnzbd
       - [x] Radarr
