@@ -2,7 +2,7 @@ baseURL: http://localhost:1313/
 title: "YAMS"
 theme: hugo-book
 
-copyright: "This is a copyright placeholder"
+# copyright: "This is a copyright placeholder"
 
 # Book configuration
 disablePathToLower: true

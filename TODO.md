@@ -1,6 +1,6 @@
 # YAMS TODO
 
-- [ ] Finalise installer script and templates
+- [x] Finalise installer script and templates
 - [ ] Website
   - [ ] Website content
     - [x] Main guide
@@ -36,8 +36,8 @@
     - [x] Add dynamic dozzle user generation command + any other interactive components
     - [x] Add copy button to command code blocks
 - [ ] Add proper website deploying
-- [ ] Simplify/update main REPO readme
-- [ ] Update CONTRIBUTING.md + CODE_OF_CONDUCT.md if needed
+- [x] Simplify/update main REPO readme
+- [x] Update CONTRIBUTING.md + CODE_OF_CONDUCT.md if needed
 - [ ] Get community feedback!
 - [ ] Consider/clean up old outdated PRs and issues on main repos
 
