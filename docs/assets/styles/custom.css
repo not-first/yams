@@ -412,3 +412,77 @@ a[href] .ph {
     grid-template-columns: 1fr;
   }
 }
+
+.yams-home-logo {
+  display: block;
+  width: 6rem;
+  height: 6rem;
+  margin: 0;
+  object-fit: contain;
+}
+
+.yams-home-intro {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.yams-home-intro h1 {
+  margin: 0;
+}
+
+.yams-home-intro p {
+  margin: 0.75rem 0 0;
+}
+
+.yams-home-repositories {
+  display: inline-flex;
+  margin-left: 0.75rem;
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+  vertical-align: middle;
+}
+
+.book-layout-landing a.book-btn[href] {
+  color: #ffffff !important;
+  background: var(--color-link);
+}
+
+.book-layout-landing a.book-btn[href]:hover {
+  color: #ffffff !important;
+  background: var(--color-accent-tip);
+}
+
+/* The landing page does not need the docs layout's reserved gutter or
+   minimum-width constraint. Keep the normal docs behavior unchanged. */
+html:has(body.book-layout-landing) {
+  scrollbar-gutter: auto;
+}
+
+body.book-layout-landing,
+.book-layout-landing .book-page {
+  min-width: 0;
+}
+
+body.book-layout-landing {
+  overflow-x: hidden;
+}
+
+.book-layout-landing .book-footer {
+  display: none;
+}
+
+.book-layout-landing .book-page {
+  padding-bottom: 0;
+}
+
+.book-layout-landing .book-article > p:last-child {
+  margin-bottom: 0;
+  line-height: 0;
+}
+
+.book-layout-landing .book-article > p:last-child img {
+  max-height: calc(100vh - 14rem);
+  width: auto;
+}

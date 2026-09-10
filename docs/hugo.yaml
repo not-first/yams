@@ -41,9 +41,12 @@ menu:
     - name: "Documentation"
       url: "/docs/"
       weight: 1
-    - name: "Discord"
+    - name: "Discord ↗"
       url: "https://discord.gg/Gwae3tNMST"
       weight: 2
+    - name: "Forums ↗"
+      url: "https://forum.yams.media"
+      weight: 3
 taxonomies:
   tag: tags
 
