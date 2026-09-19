@@ -4,7 +4,7 @@
 - [ ] Website
   - [ ] Website content
     - [x] Main guide
-      - [ ] Dozzle (update screenshots)
+      - [x] Dozzle
       - [x] qBittorrent
       - [x] SABnzbd
       - [x] Radarr
@@ -18,6 +18,7 @@
       - [ ] Update running everything together
       - [ ] Revamp recommendations
     - [x] Write guide on moving install/media location
+    - [ ] Write profilarr guide
     - [ ] Change wording of remote access guide
     - [ ] Update portainer guide to account for the fact it is now an optional addon
     - [ ] Update Prowlarr guide to use http proxy

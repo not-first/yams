@@ -454,6 +454,10 @@ a[href] .ph {
   background: var(--color-accent-tip);
 }
 
+.book-breadcrumbs ul {
+  margin-bottom: calc(var(--space-8) + var(--space-4));
+}
+
 /* The landing page does not need the docs layout's reserved gutter or
    minimum-width constraint. Keep the normal docs behavior unchanged. */
 html:has(body.book-layout-landing) {
