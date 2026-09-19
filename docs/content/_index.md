@@ -7,7 +7,7 @@ layout: landing
   <img class="yams-home-logo" src="/logo.png" alt="YAMS logo">
   <div>
     <h1>YAMS (Yet Another Media Server)</h1>
-    <p>A simple, beginner-friendly guided way to build a self-hosted media server with Docker Compose.</p>
+    <p>A simple, beginner-friendly setup script and handwritten guide build a self-hosted media server with Docker Compose.</p>
   </div>
 </div>
 
