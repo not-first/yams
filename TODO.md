@@ -7,8 +7,8 @@
       - [x] Dozzle
       - [x] qBittorrent
       - [x] SABnzbd
-      - [x] Radarr
-      - [x] Sonarr
+      - [ ] Radarr (update for the new local addresses change)
+      - [ ] Sonarr (update for the new local addresses change)
       - [ ] Lidarr
       - [ ] Prowlarr
       - [ ] Bazarr
