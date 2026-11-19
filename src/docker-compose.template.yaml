@@ -178,13 +178,3 @@ services:
     ports:
       - 8777:8080
     restart: unless-stopped
-
-  # Watchtower is going to keep our containers updated
-  watchtower:
-    image: nickfedor/watchtower:latest
-    container_name: watchtower
-    environment:
-      - WATCHTOWER_CLEANUP=true
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    restart: unless-stopped

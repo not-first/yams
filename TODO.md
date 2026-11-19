@@ -4,7 +4,7 @@
 - [ ] Website
   - [ ] Website content
     - [x] Main guide
-      - [x] Dozzle
+      - [ ] Dozzle (rewrite for new version)
       - [x] qBittorrent
       - [x] SABnzbd
       - [ ] Radarr (update for the new local addresses change)
