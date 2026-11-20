@@ -93,7 +93,7 @@ YAMS utilises Docker as its foundation: it provides a docker compose with all th
 
 <div class="simple-card" style="padding: 0.75rem 1.25rem; margin-top: 1rem;">
   <div class="card-content" style="font-size: 0.9rem; line-height: 1.4; opacity: 0.95;">
-    Also includes <strong>Lidarr</strong> (Music), <strong>SABnzbd</strong> (Usenet), <strong>Bazarr</strong> (Subtitles), <strong>Prowlarr</strong> (Indexers), <strong>Dozzle</strong> (Logs), and <strong>Watchtower</strong> (Auto-updates).
+    Also includes <strong>Lidarr</strong> (Music), <strong>Chaptarr</strong> (Books), <strong>SABnzbd</strong> (Usenet), <strong>Bazarr</strong> (Subtitles), <strong>Prowlarr</strong> (Indexers), <strong>Dozzle</strong> (Container Management).
   </div>
 </div>
 

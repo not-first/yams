@@ -10,6 +10,7 @@
       - [ ] Radarr (update for the new local addresses change)
       - [ ] Sonarr (update for the new local addresses change)
       - [ ] Lidarr
+      - [ ] Chaptarr
       - [ ] Prowlarr
       - [ ] Bazarr
       - [ ] Jellyfin
