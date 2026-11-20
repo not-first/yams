@@ -9,7 +9,7 @@ setup() {
 install_without_vpn() {
     run_installer \
         "" "$INSTALL_DIR" "$MEDIA_DIR" y \
-        "${1:-}" n "${2:-y}" "${3:-y}"
+        "${1:-}" n "${2:-y}" "${3:-y}" "${4:-y}"
 }
 
 @test "installs Jellyfin without VPN with an exact environment file" {
@@ -62,10 +62,11 @@ EOF
     [ ! -e "$INSTALL_DIR/yams" ]
 
     [ -f "$HOME/yams_services.txt" ]
-    [ "$(wc -l < "$HOME/yams_services.txt")" -eq 10 ]
+    [ "$(wc -l < "$HOME/yams_services.txt")" -eq 11 ]
     grep -Fxq 'Service URLs:' "$HOME/yams_services.txt"
     grep -Fxq 'jellyfin: http://192.0.2.10:8096/' "$HOME/yams_services.txt"
     grep -Fxq 'qBittorrent: http://192.0.2.10:8081/' "$HOME/yams_services.txt"
+    grep -Fxq 'Chaptarr: http://192.0.2.10:8789/' "$HOME/yams_services.txt"
     grep -Fxq 'Dozzle: http://192.0.2.10:8777/' "$HOME/yams_services.txt"
     assert_output_contains 'https://yams.media/docs/configure/dozzle/'
 }
@@ -83,8 +84,8 @@ EOF
         up -d
 }
 
-@test "installs Plex without VPN, Usenet, or Lidarr" {
-    install_without_vpn plex n n
+@test "installs Plex without VPN, Usenet, Lidarr, or Chaptarr" {
+    install_without_vpn plex n n n
 
     [ "$status" -eq 0 ]
     assert_valid_install plex
@@ -93,7 +94,9 @@ EOF
     grep -Fxq '    image: lscr.io/linuxserver/plex' "$INSTALL_DIR/docker-compose.yaml"
     grep -Fxq '    container_name: plex' "$INSTALL_DIR/docker-compose.yaml"
     grep -Fxq '    # ports: # not needed for Plex' "$INSTALL_DIR/docker-compose.yaml"
-    [ "$(grep -c 'profiles: \["disabled"\]' "$INSTALL_DIR/docker-compose.yaml")" -eq 3 ]
+    [ "$(grep -c 'profiles: \["disabled"\]' "$INSTALL_DIR/docker-compose.yaml")" -eq 4 ]
+    grep -Fxq '    profiles: ["disabled"] # Uncomment this line to disable the Chaptarr container if you don'\''t use book management' \
+        "$INSTALL_DIR/docker-compose.yaml"
     ! grep -Eq '^[[:space:]]+- 8096:8096' "$INSTALL_DIR/docker-compose.yaml"
     grep -Fxq 'plex: http://192.0.2.10:32400/web' "$HOME/yams_services.txt"
 }
@@ -108,12 +111,16 @@ EOF
     grep -Fxq '    # network_mode: host # only required for Plex' "$INSTALL_DIR/docker-compose.yaml"
     grep -Fxq '    ports: # not needed for Plex' "$INSTALL_DIR/docker-compose.yaml"
     grep -Fxq '      - 8096:8096 # required for Jellyfin and Emby' "$INSTALL_DIR/docker-compose.yaml"
+    grep -Fxq '    image: chaptarr/chaptarr:latest' "$INSTALL_DIR/docker-compose.yaml"
+    grep -Fxq '    container_name: chaptarr' "$INSTALL_DIR/docker-compose.yaml"
+    grep -Fxq '      - 8789:8789' "$INSTALL_DIR/docker-compose.yaml"
+    ! grep -Fq '    profiles: ["disabled"]' "$INSTALL_DIR/docker-compose.yaml"
 }
 
 @test "installs OpenVPN with valid optional port forwarding callbacks" {
     run_installer \
         "" "$INSTALL_DIR" "$MEDIA_DIR" y jellyfin \
-        y protonvpn openvpn n "" vpn-user vpn-password y y y
+        y protonvpn openvpn n "" vpn-user vpn-password y y y y
 
     [ "$status" -eq 0 ]
     assert_valid_install jellyfin
@@ -136,7 +143,7 @@ EOF
 @test "comments out port forwarding callbacks when port forwarding is disabled" {
     run_installer \
         "" "$INSTALL_DIR" "$MEDIA_DIR" y jellyfin \
-        y protonvpn openvpn n "" vpn-user vpn-password n y y
+        y protonvpn openvpn n "" vpn-user vpn-password n y y y
 
     [ "$status" -eq 0 ]
     assert_valid_install jellyfin
@@ -149,7 +156,7 @@ EOF
 @test "defaults Mullvad to WireGuard and disables port forwarding" {
     run_installer \
         "" "$INSTALL_DIR" "$MEDIA_DIR" y emby \
-        y MULLVAD "" "" private-key 10.0.0.2/32 "" y y
+        y MULLVAD "" "" private-key 10.0.0.2/32 "" y y y
 
     [ "$status" -eq 0 ]
     assert_valid_install emby
@@ -194,7 +201,7 @@ EOF
 @test "ProtonVPN free tier disables port forwarding" {
     run_installer \
         "" "$INSTALL_DIR" "$MEDIA_DIR" y jellyfin \
-        y protonvpn openvpn y "" vpn-user vpn-password y y
+        y protonvpn openvpn y "" vpn-user vpn-password y y y
 
     [ "$status" -eq 0 ]
     assert_valid_install jellyfin

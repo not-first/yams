@@ -444,6 +444,21 @@ configure_lidarr() {
     export setup_lidarr
 }
 
+configure_chaptarr() {
+    echo
+    echo
+    echo
+    log_info "Time to set up Chaptarr."
+    log_info "Chaptarr is used to query, add downloads to the download queue and index Audiobooks and Ebooks."
+    log_warning "Chaptarr is still in beta. It is mostly stable, but bugs and breaking changes are possible."
+    log_info "You can change this later by editing docker-compose.yaml."
+
+    read -p "Enable Chaptarr? (Y/n) [Default = y]: " setup_chaptarr
+    setup_chaptarr=${setup_chaptarr:-"y"}
+
+    export setup_chaptarr
+}
+
 running_services_location() {
     local host_ip
     host_ip=$(hostname -I | awk '{ print $1 }')
@@ -457,6 +472,7 @@ running_services_location() {
         ["Prowlarr"]="9696"
         ["Bazarr"]="6767"
         ["$media_service"]="$media_service_port"
+        ["Chaptarr"]="8789"
         ["Dozzle"]="8777"
     )
 
@@ -650,6 +666,13 @@ update_configuration_files() {
             log_error "Failed to disable Lidarr in docker-compose.yaml"
     fi
 
+    # Handle Chaptarr configuration
+    if [ "${setup_chaptarr,,}" != "y" ]; then
+        log_info "Disabling Chaptarr..."
+        sed -i '/disable the Chaptarr container/s|^[[:space:]]*#profiles:|    profiles:|' "$filename" || \
+            log_error "Failed to disable Chaptarr in docker-compose.yaml"
+    fi
+
     # Update YAMS CLI script
     log_info "Updating YAMS CLI configuration..."
     sed -i -e "s|<filename>|$filename|g" \
@@ -707,6 +730,7 @@ configure_media_service
 configure_vpn
 configure_usenet
 configure_lidarr
+configure_chaptarr
 
 log_info "Configuring the docker-compose file for user \"$username\" in \"$install_directory\"..."
 

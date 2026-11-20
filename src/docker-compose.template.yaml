@@ -164,6 +164,22 @@ services:
       - 8686:8686
     restart: unless-stopped
 
+  # Chaptarr manages audiobook and ebook libraries
+  chaptarr:
+    image: chaptarr/chaptarr:latest
+    container_name: chaptarr
+    #profiles: ["disabled"] # Uncomment this line to disable the Chaptarr container if you don't use book management
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${MEDIA_DIRECTORY}:/data
+      - ${INSTALL_DIRECTORY}/config/chaptarr:/config
+    ports:
+      - 8789:8789
+    restart: unless-stopped
+
   # Dozzle provides an interface to view logs and conduct basic container management
   dozzle:
     image: amir20/dozzle:latest
