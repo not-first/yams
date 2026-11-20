@@ -32,13 +32,13 @@ INSTALL_DIRECTORY: Your YAMS install directory
 
 These make it super easy to keep your custom containers working in harmony with YAMS!
 
-## How to add a container
+## How to add a container (Seerr)
 
 > This specific guide will focus on adding Seerr, but the same principles apply to any container you want to add. Just make sure to check the container's documentation for any specific requirements.
 
 Let's learn how to adapt a docker compose entry for a new container and add it to your YAMS setup.
 
-Let's walk through adding [Seerr](https://seerr.dev/) - a fantastic request management app for your media server. You don't need to add this if you don't want! Check out the [Other Containers](#other-containers) section for more options, or adapt this section to add your own container.
+Let's walk through adding [Seerr](https://seerr.dev/) - a fantastic request management app for your media server. You don't need to add this if you don't want! Check out the [Other Containers](#other-containers) section for more options, or adapt these steps to a container of your choice.
 
 #### 1. First, open `_INSTALL_PATH_/docker-compose.custom.yaml`:
 ```bash

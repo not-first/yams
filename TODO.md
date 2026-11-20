@@ -12,7 +12,7 @@
       - [ ] Lidarr
       - [ ] Chaptarr
       - [ ] Prowlarr
-      - [ ] Bazarr
+      - [ ] Bazarr (opensubtitles.com)
       - [ ] Jellyfin
       - [ ] Emby
       - [ ] Plex
