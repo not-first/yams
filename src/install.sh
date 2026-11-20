@@ -670,34 +670,6 @@ install_cli() {
     fi
 }
 
-setup_dozzle_users() {
-    local dozzle_config_dir="$install_directory/config/dozzle"
-    local dozzle_users_file="$dozzle_config_dir/users.yml"
-    mkdir -p "$dozzle_config_dir"
-
-    if [ -s "$dozzle_users_file" ]; then
-        log_info "Keeping existing Dozzle users.yml"
-        return
-    fi
-
-    # bcrypt hash generated from a random 64 character string
-    local dummy_hash='$2b$11$8HxXT0N1zo5yE4Gdkh7Flu0dIj2vo.D9lqpduBpg/frXkySMjb7g6'
-
-    cat > "$dozzle_users_file" << YAMLEOF
-users:
-  yams:
-    email: ""
-    name: ""
-    password: $dummy_hash
-    filter: ""
-    roles: none
-YAMLEOF
-    chmod 600 "$dozzle_users_file" || \
-        log_error "Failed to secure Dozzle users.yml"
-
-    log_success "Dozzle users.yml created ✅"
-}
-
 set_permissions() {
     local dirs=("$media_directory" "$install_directory" "$install_directory/config")
 
@@ -741,9 +713,6 @@ log_info "Configuring the docker-compose file for user \"$username\" in \"$insta
 # Copy and update configuration files
 copy_configuration_files
 update_configuration_files
-
-# Create locked Dozzle placeholder user so simple auth can boot
-setup_dozzle_users
 
 log_success "Everything installed correctly! 🎉"
 

@@ -70,20 +70,6 @@ EOF
     assert_output_contains 'https://yams.media/docs/configure/dozzle/'
 }
 
-@test "creates an unusable Dozzle bootstrap user" {
-    install_without_vpn
-
-    [ "$status" -eq 0 ]
-    grep -Fxq '  yams:' "$INSTALL_DIR/config/dozzle/users.yml"
-    grep -Fxq '    password: $2b$11$8HxXT0N1zo5yE4Gdkh7Flu0dIj2vo.D9lqpduBpg/frXkySMjb7g6' \
-        "$INSTALL_DIR/config/dozzle/users.yml"
-    grep -Fxq '    roles: none' "$INSTALL_DIR/config/dozzle/users.yml"
-    [ "$(stat -c %a "$INSTALL_DIR/config/dozzle/users.yml")" = 600 ]
-    [ ! -e "$INSTALL_DIR/config/dozzle/bootstrap-password.txt" ]
-    ! grep -Fq 'Dozzle bootstrap password:' <<<"$output"
-    ! grep -Fq $'\tdocker\trun\t' "$YAMS_DOCKER_LOG"
-}
-
 @test "keeps the custom Compose template unchanged and uses it at startup" {
     install_without_vpn
 
@@ -338,8 +324,6 @@ EOF
 
     [ "$status" -eq 1 ]
     assert_output_contains 'Failed to start YAMS services'
-    [ ! -e "$INSTALL_DIR/config/dozzle/bootstrap-password.txt" ]
-    ! grep -Fq 'Dozzle bootstrap password:' <<<"$output"
     [ ! -e "$YAMS_SYSTEM_BIN/yams" ]
     [ ! -e "$HOME/yams_services.txt" ]
 }
