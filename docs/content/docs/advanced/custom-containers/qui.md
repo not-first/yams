@@ -3,6 +3,8 @@ weight: 40
 title: Qui
 ---
 
+OUTDATED OUTDATED!
+
 # Seeding with Qui
 
 In general, it is good practice to seed any torrents you download. Seeding is the act of sharing a media file you have downloaded with other users, helping with their downloads.

@@ -157,8 +157,7 @@ Keep in mind the torrent automations have the ability to delete downloads and ma
       - TZ=${TZ}
     volumes:
       - ${INSTALL_DIRECTORY}/config/qui:/config
-      # optional, but required for filesystem-enabled features like hardlink detection
-      - ${MEDIA_DIRECTORY}/downloads/torrents:/data/downloads/torrents
+      - ${MEDIA_DIRECTORY}:/data
 ```
 
 *If you want to jump straight into a guided setup, check out *[Seeding with Qui](/docs/advanced/custom-containers/qui)* for a setup where all torrents are seeded whilst the media remains in your server, and then smoothly removed after the item is watched in your streaming application.*
